@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>My Recipes</title>
+
+  <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="styles/unsemantic-grid-responsive.css">
+  <link rel="stylesheet" href="styles/main.css">
+
+</head>
+
+<!-- TODO Add a directive to the body element in order to 
+  bootstrap your Angular app. Be sure to use the name 'app' 
+  so that the provided Angular routes function properly. -->
+<body>
+
+  <div class="grid-container">
+
+    <div class="grid-100">
+      <h1>
+        <img src="images/chefbot.svg" height="60px">
+        <br>
+        My Recipes
+      </h1>
+    </div>
+
+    <div class="grid-100">
+
+      <div class="recipes">
+
+        <!-- The ng-view Angular directive is used to tell the Angular router
+              where requested views should be loaded. Removing this directive 
+              will cause routing to not function properly. -->
+        <div ng-view></div>
+
+        <div class="row">&nbsp;</div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="vendor/angular.js"></script>
+  <script src="vendor/angular-route.js"></script>
+  
+  <!-- TODO Add script tags for your JavaScript files here -->
+
+  <script src="scripts/route-config.js"></script>
+</body>
+
+</html>
