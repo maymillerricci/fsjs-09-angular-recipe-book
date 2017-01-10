@@ -106,3 +106,7 @@ button {
 .pad-top {
   padding-top: 10px;
 }
+
+.hide {
+  display: none;
+}
