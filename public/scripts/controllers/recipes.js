@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app')
-.controller('RecipesController', function($scope, dataService) {
+.controller('RecipesController', function($scope, $location, dataService) {
   dataService.getCategories(function(response) {
     $scope.categories = response.data;
     $scope.categories.unshift({ name: "All Categories" });
@@ -21,5 +21,19 @@ angular.module('app')
         $scope.recipes = response.data;
       });
     }
+  }
+
+  $scope.newRecipe = function() {
+    $location.path('/add');
+  }
+
+  $scope.editRecipe = function(recipeId) {
+    $location.path('/edit/' + recipeId);
+  }
+
+  $scope.deleteRecipe = function(recipeId, $index) {
+    dataService.deleteRecipe(recipeId, function(response) {
+      $scope.recipes.splice($index, 1); 
+    });
   }
 });

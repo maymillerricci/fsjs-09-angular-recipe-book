@@ -246,7 +246,7 @@ var recipes = [
   ,
   {
     name: 'Grilled Cheese Sandwich',
-    description: 'Quick to prepare and delicious chees sandwiches.',
+    description: 'Quick to prepare and delicious cheese sandwiches.',
     category: 'Appetizer/Snack',
     prepTime: 10,
     cookTime: 7,
