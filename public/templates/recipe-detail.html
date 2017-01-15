@@ -9,7 +9,7 @@
     <div class="flush-right">
       <!-- TODO Add directives to both the "Save Recipe" and "Cancel"
         buttons in order to handle user clicks. -->
-      <button>Save Recipe</button>
+      <button ng-click="updateRecipe(recipe)">Save Recipe</button>
       <button ng-click="showAllRecipes()" class="secondary">Cancel</button>
     </div>
   </div>
@@ -42,7 +42,7 @@
     <p>
       <!-- TODO Add a directive to this input element to bind its value 
         to the recipe model's `name` property. -->
-      <input type="text">
+      <input ng-model="recipe.name" type="text">
     </p>
   </div>
 </div>
@@ -58,7 +58,7 @@
     <p>
       <!-- TODO Add a directive to this textarea element to bind its content 
         to the recipe model's `description` property. -->
-      <textarea></textarea>
+      <textarea ng-model="recipe.description"></textarea>
     </p>
   </div>
 </div>
@@ -75,8 +75,8 @@
       <!-- TODO Add directives to this select element to bind its value 
         to the recipe model's `category` property and to populate the list
         with the categories from the database. -->
-      <select>
-        <option value="">All Categories</option>
+      <select ng-model="recipe.category">
+        <option ng-repeat="category in categories" value="{{category.name}}" ng-selected="{{recipe.category === category.name}}">{{category.name}}</option>
       </select>
     </p>
   </div>
@@ -93,7 +93,7 @@
     <p>
       <!-- TODO Add a directive to this input element to bind its value 
         to the recipe model's `prepTime` property. -->
-      <input type="number">
+      <input ng-model="recipe.prepTime" type="number">
     </p>
   </div>
 </div>
@@ -109,7 +109,7 @@
     <p>
       <!-- TODO Add a directive to this input element to bind its value 
         to the recipe model's `cookTime` property. -->
-      <input type="number">
+      <input ng-model="recipe.cookTime" type="number">
     </p>
   </div>
 </div>

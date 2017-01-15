@@ -12,6 +12,16 @@ angular.module('app')
     });
   }
 
+  dataService.getCategories(function(response) {
+    $scope.categories = response.data;
+  });
+
+  $scope.updateRecipe = function(recipe) {
+    dataService.updateRecipe(recipe._id, function(response) {
+      alert('updated');
+    });
+  }
+
   $scope.showAllRecipes = function() {
     $location.path('/');
   }
