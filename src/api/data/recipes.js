@@ -200,7 +200,7 @@ var recipes = [
     ]
   },
   {
-    name: 'Lemonde',
+    name: 'Lemonade',
     description: 'Refreshing summer-time drink.',
     category: 'Beverage',
     prepTime: 20,
