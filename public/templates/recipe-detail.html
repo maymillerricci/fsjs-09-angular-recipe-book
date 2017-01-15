@@ -198,19 +198,19 @@
 
   <!-- TODO Add a directive to this div element so that it repeats 
     for each recipe step to display. -->
-  <div class="step-row">
+  <div ng-repeat="step in recipe.steps" class="step-row">
     <div class="prefix-20 grid-75">
       <p>
         <!-- TODO Add a directive to this input element to bind its value 
           to the recipe step model's `description` property. -->
-        <input type="text">
+        <input ng-model="step.description" type="text">
       </p>
     </div>
     <div class="grid-5 pad-top">
       <p class="flush-right">
         <!-- TODO Add a directive to this anchor element so that you can 
           delete the recipe step when the user clicks on the 'Delete' link. -->
-        <a class="no-action-link"> <img src="images/delete.svg" height="12px"> </a>
+        <a ng-click="deleteStep($index)" class="no-action-link"> <img src="images/delete.svg" height="12px"> </a>
       </p>
     </div>
   </div>
@@ -219,7 +219,7 @@
     <p>
      <!-- TODO Add a directive to this button in order to handle 
        when the user clicks to add a new recipe step. -->
-     <button>+ Add Another Step</button>
+     <button ng-click="addStep()">+ Add Another Step</button>
     </p>
   </div>
 

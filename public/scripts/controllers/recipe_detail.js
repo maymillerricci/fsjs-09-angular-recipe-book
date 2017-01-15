@@ -38,4 +38,13 @@ angular.module('app')
     // figure this out
     $scope.recipe.ingredients.push(null);
   }
+
+  $scope.deleteStep = function($index) {
+    $scope.recipe.steps.splice($index, 1);
+  }
+
+  $scope.addStep = function() {
+    // figure this out
+    $scope.recipe.steps.push(null);
+  }
 });
