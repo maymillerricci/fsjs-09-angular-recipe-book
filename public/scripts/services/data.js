@@ -27,9 +27,9 @@ angular.module('app')
     .then(callback);
   }
 
-  this.updateRecipe = function(recipe, callback) {
+  this.updateRecipe = function(recipe, successCallback, errorCallback) {
     $http.put('/api/recipes/' + recipe._id, recipe)
-    .then(callback);
+    .then(successCallback, errorCallback);
   }
 
   this.createRecipe = function(callback) {

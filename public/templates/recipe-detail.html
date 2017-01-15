@@ -18,14 +18,15 @@
 
 <!-- TODO Add a directive to this div element so that it only displays
   when there are validation messages to display. -->
-<div class="grid-100 row">
+<div ng-class="{'hide': errors.length === 0}" class="grid-100 row">
   <div class="grid-100">
     <p><i>The following errors were found:</i></p>
     <ul class="validation-errors">
       <!-- TODO Add a directive to this li element so that it repeats
         for each validation message that there is to display -->
-      <li>
+      <li ng-repeat="error in errors">
         <!-- TODO Add a binding expression to display the validation user message. -->
+        {{error.userMessage}}
       </li>
     </ul>
   </div>

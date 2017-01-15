@@ -2,6 +2,8 @@
 
 angular.module('app')
 .controller('RecipeDetailController', function($scope, $location, dataService) {
+  $scope.errors = [];
+
   if ($location.path() === '/add') {
     $scope.mode = 'add';
   } else {
@@ -21,9 +23,20 @@ angular.module('app')
   });
 
   $scope.updateRecipe = function() {
-    dataService.updateRecipe($scope.recipe, function(response) {
-      alert('updated');
-    });
+    dataService.updateRecipe($scope.recipe, 
+      function(response) {
+        $scope.errors = [];
+      }, 
+      function(response) {
+        var errors = response.data.errors
+        for(var error in errors) {
+          var itemErrors = errors[error];
+          for(var itemError in itemErrors) {
+            $scope.errors.push(itemErrors[itemError])
+          }
+        }
+      }
+    );
   }
 
   $scope.showAllRecipes = function() {
