@@ -33,9 +33,12 @@
     }
 
     $scope.deleteRecipe = function(recipeId, $index) {
-      dataService.deleteRecipe(recipeId, function(response) {
-        $scope.recipes.splice($index, 1); 
-      });
+      var confirmDelete = confirm("Are you sure you want to delete this recipe?");
+      if (confirmDelete) {
+        dataService.deleteRecipe(recipeId, function(response) {
+          $scope.recipes.splice($index, 1); 
+        });
+      }
     }
   });
 })();
