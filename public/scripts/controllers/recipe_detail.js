@@ -36,7 +36,7 @@
     $scope.createRecipe = function() {
       dataService.createRecipe($scope.recipe, 
         function(response) {
-          $scope.errors = [];
+          $scope.showAllRecipes();
         }, 
         function(response) {
           $scope.collectErrors(response);
@@ -47,7 +47,7 @@
     $scope.updateRecipe = function() {
       dataService.updateRecipe($scope.recipe, 
         function(response) {
-          $scope.errors = [];
+          $scope.showAllRecipes();
         }, 
         function(response) {
           $scope.collectErrors(response);
