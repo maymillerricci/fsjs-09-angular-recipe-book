@@ -27,15 +27,14 @@ angular.module('app')
     .then(callback);
   }
 
-  this.updateRecipe = function(recipe, successCallback, errorCallback) {
-    $http.put('/api/recipes/' + recipe._id, recipe)
+  this.createRecipe = function(recipe, successCallback, errorCallback) {
+    $http.post('/api/recipes', recipe)
     .then(successCallback, errorCallback);
   }
 
-  this.createRecipe = function(callback) {
-    // need to add recipe data to create
-    $http.post('/api/recipes')
-    .then(callback);
+  this.updateRecipe = function(recipe, successCallback, errorCallback) {
+    $http.put('/api/recipes/' + recipe._id, recipe)
+    .then(successCallback, errorCallback);
   }
 
   this.deleteRecipe = function(recipeId, callback) {

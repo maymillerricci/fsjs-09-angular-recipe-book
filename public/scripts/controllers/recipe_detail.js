@@ -6,6 +6,7 @@ angular.module('app')
 
   if ($location.path() === '/add') {
     $scope.mode = 'add';
+    $scope.recipe = { ingredients: [], steps: [] };
   } else {
     $scope.mode = 'edit';
     var recipeId = $location.path().split('/').slice(-1)[0];
@@ -21,6 +22,32 @@ angular.module('app')
   dataService.getFoodItems(function(response) {
     $scope.foodItems = response.data;
   });
+
+  $scope.saveRecipe = function() {
+    $scope.errors = [];
+    if ($scope.mode === 'add') {
+      $scope.createRecipe();
+    } else {
+      $scope.updateRecipe();
+    } 
+  }
+
+  $scope.createRecipe = function() {
+    dataService.createRecipe($scope.recipe, 
+      function(response) {
+        $scope.errors = [];
+      }, 
+      function(response) {
+        var errors = response.data.errors
+        for(var error in errors) {
+          var itemErrors = errors[error];
+          for(var itemError in itemErrors) {
+            $scope.errors.push(itemErrors[itemError])
+          }
+        }
+      }
+    );
+  }
 
   $scope.updateRecipe = function() {
     dataService.updateRecipe($scope.recipe, 
