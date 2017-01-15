@@ -27,9 +27,8 @@ angular.module('app')
     .then(callback);
   }
 
-  this.updateRecipe = function(recipeId, callback) {
-    // need to also add recipe data to update
-    $http.put('/api/recipes/' + recipeId)
+  this.updateRecipe = function(recipe, callback) {
+    $http.put('/api/recipes/' + recipe._id, recipe)
     .then(callback);
   }
 

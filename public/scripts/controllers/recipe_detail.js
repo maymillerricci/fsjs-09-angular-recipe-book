@@ -20,8 +20,8 @@ angular.module('app')
     $scope.foodItems = response.data;
   });
 
-  $scope.updateRecipe = function(recipe) {
-    dataService.updateRecipe(recipe._id, function(response) {
+  $scope.updateRecipe = function() {
+    dataService.updateRecipe($scope.recipe, function(response) {
       alert('updated');
     });
   }
@@ -35,8 +35,11 @@ angular.module('app')
   }
 
   $scope.addIngredient = function() {
-    // figure this out
-    $scope.recipe.ingredients.push(null);
+    $scope.recipe.ingredients.push({
+      foodItem: "", 
+      condition: "", 
+      amount: ""
+    });
   }
 
   $scope.deleteStep = function($index) {
@@ -44,7 +47,6 @@ angular.module('app')
   }
 
   $scope.addStep = function() {
-    // figure this out
-    $scope.recipe.steps.push(null);
+    $scope.recipe.steps.push({ description: "" });
   }
 });
