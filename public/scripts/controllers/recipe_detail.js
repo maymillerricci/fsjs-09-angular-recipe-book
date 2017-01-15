@@ -38,13 +38,7 @@ angular.module('app')
         $scope.errors = [];
       }, 
       function(response) {
-        var errors = response.data.errors
-        for(var error in errors) {
-          var itemErrors = errors[error];
-          for(var itemError in itemErrors) {
-            $scope.errors.push(itemErrors[itemError])
-          }
-        }
+        $scope.collectErrors(response);
       }
     );
   }
@@ -55,15 +49,19 @@ angular.module('app')
         $scope.errors = [];
       }, 
       function(response) {
-        var errors = response.data.errors
-        for(var error in errors) {
-          var itemErrors = errors[error];
-          for(var itemError in itemErrors) {
-            $scope.errors.push(itemErrors[itemError])
-          }
-        }
+        $scope.collectErrors(response);
       }
     );
+  }
+
+  $scope.collectErrors = function(response) {
+    var errors = response.data.errors;
+    for(var error in errors) {
+      var itemErrors = errors[error];
+      for(var itemError in itemErrors) {
+        $scope.errors.push(itemErrors[itemError]);
+      }
+    }
   }
 
   $scope.showAllRecipes = function() {
