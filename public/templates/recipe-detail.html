@@ -3,14 +3,14 @@
     <!-- TODO Add a binding expression to display the recipe name 
       when editing a recipe. When adding a recipe, display the 
       static text 'Add New Recipe'. -->
-    <h2>Add/Edit Recipe</h2>
+    <h2>{{mode == "add" ? "Add New Recipe" : recipe.name}}</h2>
   </div>
   <div class="grid-50">
     <div class="flush-right">
       <!-- TODO Add directives to both the "Save Recipe" and "Cancel"
         buttons in order to handle user clicks. -->
       <button>Save Recipe</button>
-      <button class="secondary">Cancel</button>
+      <button ng-click="showAllRecipes()" class="secondary">Cancel</button>
     </div>
   </div>
 </div>
